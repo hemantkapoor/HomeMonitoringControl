@@ -1,5 +1,11 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>contents/MyText.qml</file>
+        <file>contents/MyHeadline.qml</file>
+        <file>images/homeIcon.jpeg</file>
+        <file>pages/ConnectPage.qml</file>
+        <file>contents/MyTextArea.qml</file>
+        <file>contents/MyButton.qml</file>
     </qresource>
 </RCC>
