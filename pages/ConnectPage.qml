@@ -76,6 +76,10 @@ Item
                 id: connectButtonId
                 myButtonText: "Connect"
                 myFontSize: 50
+                onClicked:
+                {
+                    console.log("Connect button clicked")
+                }
             }
             MyButton
             {
