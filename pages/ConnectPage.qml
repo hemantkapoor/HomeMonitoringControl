@@ -10,6 +10,7 @@ Item
     {
         anchors.fill: parent
         color: "transparent"
+        property int fontSize: connectPageId.width/40
         MyHeadline
         {
 
@@ -23,14 +24,14 @@ Item
                 id: ipAddressText
                 width: (connectPageId.width/30)*6
                 height: 1
-                myFontSize: connectPageId.width/30
+                myFontSize: fontSize
                 myText: "IP ADDRESS"
             }
             MyTextArea
             {
                 width: connectPageId.width /4
                 height: connectPageId.width/25
-                myFontSize: connectPageId.width/30
+                myFontSize: fontSize
                 myValidator:  RegExpValidator
                 {
                     regExp:  /^((?:[0-1]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\.){0,3}(?:[0-1]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$/
@@ -42,7 +43,7 @@ Item
                 id: portText
                 width: (connectPageId.width/30)*2
                 height: 1
-                myFontSize: connectPageId.width/30
+                myFontSize: fontSize
                 myText: "Port"
 
             }
@@ -50,7 +51,7 @@ Item
             {
                 width: connectPageId.width /12
                 height: connectPageId.width/25
-                myFontSize: connectPageId.width/30
+                myFontSize: fontSize
                 myValidator:  RegExpValidator
                 {
                     regExp:  /^([0-9][0-9][0-9][0-9])$/
@@ -75,7 +76,7 @@ Item
             {
                 id: connectButtonId
                 myButtonText: "Connect"
-                myFontSize: 50
+                myFontSize: 30
                 onClicked:
                 {
                     console.log("Connect button clicked")
@@ -85,7 +86,7 @@ Item
             {
                 id: exitButtonId
                 myButtonText: "Exit"
-                myFontSize: 50
+                myFontSize: 30
                 onClicked:
                 {
                    Qt.quit()

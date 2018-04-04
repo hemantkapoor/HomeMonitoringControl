@@ -8,10 +8,10 @@ Window {
     visible: true
     width: Screen.width
     height: Screen.height
-   // width: 200
-   // height: 500
+    //width: 200
+    //height: 500
     title: qsTr("Home Monitoring Control")
-    //visibility: Window.FullScreen
+    visibility: Window.FullScreen
     color: "black"
 
     StackView {
@@ -29,18 +29,5 @@ Window {
         }
     }
 
-    /*
-    Rectangle
-    {
-        width: parent.width
-        height: parent.height
-        color: "black"
-        anchors.fill: parent
-        ConnectPage
-        {
-
-        }
-    }
-    */
 
 }

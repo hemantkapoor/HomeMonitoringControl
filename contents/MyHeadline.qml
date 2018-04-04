@@ -30,7 +30,7 @@ Item {
             id: headlineText
             width: parent.width /2
             height: parent.height
-            myFontSize: parent.height
+            myFontSize: parent.height/2
             myText: "Home Monitoring Control"
 
         }
