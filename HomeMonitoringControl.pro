@@ -15,7 +15,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp \
     comms/tcp.cpp \
     messageManager/messagebase.cpp \
-    messageManager/messagemanager.cpp
+    messageManager/messagemanager.cpp \
+    connectPage/getledcontrolmessage.cpp
 
 RESOURCES += qml.qrc
 
@@ -33,4 +34,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     comms/tcp.h \
     messageManager/messagebase.h \
-    messageManager/messagemanager.h
+    messageManager/messagemanager.h \
+    connectPage/getledcontrolmessage.h
