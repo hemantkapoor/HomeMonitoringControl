@@ -1,3 +1,4 @@
+#include <QDebug>
 #include "tcp.h"
 
 Tcp::Tcp(QObject *parent) : QObject(parent)
@@ -11,6 +12,7 @@ Tcp::~Tcp()
     {
         delete m_socket;
     }
+    qDebug() << "Socket deleted";
 }
 
 bool Tcp::connect(QString ipAddress, quint16 port)
@@ -53,6 +55,7 @@ bool Tcp::send(const QByteArray& data)
         count += m_socket->write(data);
         if (!m_socket->waitForBytesWritten(TcpName::WRITE_WAIT_TIME_MSEC))
         {
+            m_state = TcpName::DISCONNECTED;
             return false;
         }
     }

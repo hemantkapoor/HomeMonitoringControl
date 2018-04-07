@@ -16,7 +16,8 @@ SOURCES += main.cpp \
     comms/tcp.cpp \
     messageManager/messagebase.cpp \
     messageManager/messagemanager.cpp \
-    connectPage/getledcontrolmessage.cpp
+    connectPage/getledcontrolmessage.cpp \
+    connectingPage/connectingpagehandler.cpp
 
 RESOURCES += qml.qrc
 
@@ -35,4 +36,5 @@ HEADERS += \
     comms/tcp.h \
     messageManager/messagebase.h \
     messageManager/messagemanager.h \
-    connectPage/getledcontrolmessage.h
+    connectPage/getledcontrolmessage.h \
+    connectingPage/connectingpagehandler.h

@@ -25,7 +25,7 @@ Window {
         id: connectPageComponent
         ConnectPage
         {
-
+            myStack: stack
         }
     }
 

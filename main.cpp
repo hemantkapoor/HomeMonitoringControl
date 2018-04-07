@@ -1,5 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "messageManager/messagemanager.h"
+#include "connectingPage/connectingpagehandler.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,6 +13,10 @@ int main(int argc, char *argv[])
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
+    ConnectingPageHandler* connectingPage = new ConnectingPageHandler(&app);
+    auto temp = MessageManager::instance(&app);
+    temp->start();
+    //engine.rootContext()->setContextProperty("app", &app);
 
     return app.exec();
 }

@@ -1,13 +1,18 @@
-import QtQuick 2.0
+import QtQuick 2.8
+import QtQuick.Controls 2.0
+import QtQuick.Window 2.2
+import QtGraphicalEffects 1.0
 import "../contents"
 
 Item
 {
+    property StackView myStack
     id: connectPageId
     width: parent.width
     height: parent.height
     Rectangle
     {
+
         anchors.fill: parent
         color: "transparent"
         property int fontSize: connectPageId.width/40
@@ -80,6 +85,7 @@ Item
                 onClicked:
                 {
                     console.log("Connect button clicked")
+                    myStack.push(connectingPage)
                 }
             }
             MyButton
@@ -93,6 +99,16 @@ Item
                 }
             }
         }
+    }
+
+    Component
+    {
+        id: connectingPage
+        ConnectingPage
+        {
+            myStack: connectPageId.myStack
+        }
+
     }
 
 }

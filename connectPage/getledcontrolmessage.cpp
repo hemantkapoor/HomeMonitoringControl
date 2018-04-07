@@ -1,3 +1,4 @@
+#include <QDebug>
 #include "getledcontrolmessage.h"
 
 GetLedControlMessage::GetLedControlMessage(QObject *parent):MessageBase(parent)
@@ -12,7 +13,8 @@ QByteArray GetLedControlMessage::dataToSend()
 
 
 
-void GetLedControlMessage::dataReceived(QByteArray &)
+void GetLedControlMessage::dataReceived(QByteArray& msg)
 {
+    qDebug() << "Received message = "<<msg;
 
 }

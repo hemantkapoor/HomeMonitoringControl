@@ -13,7 +13,8 @@ namespace TcpName
 
     enum ConnectionStateEnum
     {
-        DISCONNECTED = 0,
+        NOT_INITIALISED = 0,
+        DISCONNECTED,
         CONNECTED
     };
 
@@ -37,7 +38,7 @@ public slots:
 
 private:
     QTcpSocket* m_socket = nullptr;
-    TcpName::ConnectionStateEnum m_state = TcpName::DISCONNECTED;
+    TcpName::ConnectionStateEnum m_state = TcpName::NOT_INITIALISED;
     QString m_ipAddress;
     quint16 m_port;
 
