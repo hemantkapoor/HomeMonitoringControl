@@ -12,7 +12,7 @@ Item
     height: parent.height
     Rectangle
     {
-
+        id: connectPageRectId
         anchors.fill: parent
         color: "transparent"
         property int fontSize: connectPageId.width/40
@@ -29,14 +29,14 @@ Item
                 id: ipAddressText
                 width: (connectPageId.width/30)*6
                 height: 1
-                myFontSize: fontSize
+                myFontSize: connectPageRectId.fontSize
                 myText: "IP ADDRESS"
             }
             MyTextArea
             {
                 width: connectPageId.width /4
                 height: connectPageId.width/25
-                myFontSize: fontSize
+                myFontSize: connectPageRectId.fontSize
                 myValidator:  RegExpValidator
                 {
                     regExp:  /^((?:[0-1]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\.){0,3}(?:[0-1]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$/
@@ -48,7 +48,7 @@ Item
                 id: portText
                 width: (connectPageId.width/30)*2
                 height: 1
-                myFontSize: fontSize
+                myFontSize: connectPageRectId.fontSize
                 myText: "Port"
 
             }
@@ -56,7 +56,7 @@ Item
             {
                 width: connectPageId.width /12
                 height: connectPageId.width/25
-                myFontSize: fontSize
+                myFontSize: connectPageRectId.fontSize
                 myValidator:  RegExpValidator
                 {
                     regExp:  /^([0-9][0-9][0-9][0-9])$/
@@ -82,6 +82,7 @@ Item
                 id: connectButtonId
                 myButtonText: "Connect"
                 myFontSize: 30
+                enabled: false
                 onClicked:
                 {
                     console.log("Connect button clicked")
@@ -90,6 +91,8 @@ Item
             }
             MyButton
             {
+                //width: parent.width
+                //height: parent.height
                 id: exitButtonId
                 myButtonText: "Exit"
                 myFontSize: 30
@@ -106,6 +109,8 @@ Item
         id: connectingPage
         ConnectingPage
         {
+            width: connectPageId.width
+            height: connectPageId.height
             myStack: connectPageId.myStack
         }
 

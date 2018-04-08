@@ -36,7 +36,7 @@ Item {
 
         Text {
             id: innerText
-            font.pointSize: myFontSize
+            font.pointSize: button.myFontSize
             anchors.centerIn: parent
         }
     }
@@ -75,10 +75,10 @@ Item {
     MouseArea {
         hoverEnabled: true
         anchors.fill: button
-        onEntered: { button.state='Hovering'}
-        onExited: { button.state=''}
-        onClicked: { button.clicked();}
-        onPressed: { button.state="Pressed" }
+        onEntered: {  button.state='Hovering'}
+        onExited: {   button.state=''}
+        onClicked: {  button.clicked();}
+        onPressed: {  button.state="Pressed" }
         onReleased: {
             if (containsMouse)
               button.state="Hovering";

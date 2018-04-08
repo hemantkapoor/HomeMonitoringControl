@@ -4,7 +4,9 @@ import QtQuick.Window 2.2
 import QtGraphicalEffects 1.0
 import "./pages"
 
-Window {
+Window
+{
+    id: mainWindowId
     visible: true
     width: Screen.width
     height: Screen.height
@@ -14,7 +16,8 @@ Window {
     visibility: Window.FullScreen
     color: "black"
 
-    StackView {
+    StackView
+    {
         id: stack
         initialItem: connectPageComponent
         anchors.fill: parent
@@ -25,6 +28,8 @@ Window {
         id: connectPageComponent
         ConnectPage
         {
+            width: mainWindowId.width
+            height: mainWindowId.height
             myStack: stack
         }
     }

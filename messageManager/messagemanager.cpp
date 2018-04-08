@@ -8,9 +8,9 @@ MessageManager* MessageManager::m_instance = nullptr;
 
 MessageManager::MessageManager(QObject *parent):
     QThread(parent),
-    m_stop(false)
+    m_stop(false),
+    m_abort(false)
 {
-    m_tcp = new Tcp(parent);
 }
 
 void MessageManager::waitForConnection()
@@ -23,17 +23,25 @@ void MessageManager::waitForConnection()
         m_tcp->connect(m_ipAddress,m_port);
     }
     //Indefinite loop for connection to be establised
-    while(m_tcp->state() == TcpName::DISCONNECTED)
+    while(m_tcp->state() == TcpName::DISCONNECTED && !m_abort)
     {
         m_tcp->reconnect();
     }
-    emit connectionEstablished();
+    if(m_abort)
+    {
+        emit connectionAborted();
+    }
+    else
+    {
+        emit connectionEstablished();
+    }
 }
 
 MessageManager::~MessageManager()
 {
     //Lets call stop
     stop();
+    if(m_tcp != nullptr) { delete m_tcp; }
 }
 
 MessageManager *MessageManager::instance(QObject *parent)
@@ -48,18 +56,36 @@ MessageManager *MessageManager::instance(QObject *parent)
 
 void MessageManager::connectToServer(const QString & ipAddress, const quint16 port)
 {
+    //If the thread is running then we just set abort to be false
+    if(isRunning())
+    {
+        m_abort = false;
+        return;
+    }
     m_ipAddress = ipAddress;
     m_port = port;
+    m_abort = false;
     start();
 }
 
 void MessageManager::run()
 {
+    m_tcp = new Tcp();
     qDebug() << "Starting Message Manager Thread";
     //Connect to server
     waitForConnection();
     while(!m_stop)
     {
+        while(m_abort)
+        {
+            QThread::msleep(MessageManagerName::THREAD_SLEEP_MS);
+        }
+        if(m_tcp->state() == TcpName::DISCONNECTED)
+        {
+            waitForConnection();
+            continue;
+        }
+
         QThread::msleep(MessageManagerName::THREAD_SLEEP_MS);
 
     }

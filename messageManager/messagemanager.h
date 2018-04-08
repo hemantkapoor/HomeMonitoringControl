@@ -35,6 +35,7 @@ public:
 signals:
     void connectingToServer();
     void connectionEstablished();
+    void connectionAborted();
     void connectionError();
     void reConnecting();
 
@@ -52,6 +53,7 @@ private:
 
     //For Comms
     Tcp* m_tcp;
+    std::atomic<bool> m_abort;
 
     QString m_ipAddress;
     quint16 m_port;

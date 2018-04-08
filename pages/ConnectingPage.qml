@@ -8,8 +8,8 @@ Item
 {
     property StackView myStack
     id: connectingPageId
-    width: parent.width
-    height: parent.height
+        width: parent.width
+        height: parent.height
     Rectangle
     {
 

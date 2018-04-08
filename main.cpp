@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include "messageManager/messagemanager.h"
 #include "connectingPage/connectingpagehandler.h"
 
@@ -17,6 +18,7 @@ int main(int argc, char *argv[])
     auto temp = MessageManager::instance(&app);
     temp->start();
     //engine.rootContext()->setContextProperty("app", &app);
+    engine.rootContext()->setContextProperty("connectingPage", connectingPage);
 
     return app.exec();
 }
