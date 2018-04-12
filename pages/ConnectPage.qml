@@ -10,8 +10,19 @@ Item
     id: connectPageId
     width: parent.width
     height: parent.height
+
     Rectangle
-    {
+    {/*
+        Item {
+            id: connectionHandlers
+            Connections
+            {
+                target: theConnectingPage
+                on
+            }
+        }
+        */
+
         id: connectPageRectId
         anchors.fill: parent
         color: "transparent"
@@ -41,6 +52,11 @@ Item
                 {
                     regExp:  /^((?:[0-1]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\.){0,3}(?:[0-1]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$/
                 }
+                onValueChanged:
+                {
+                    console.log(myText)
+                    theConnectingPage.ipAddress = myText
+                }
 
             }
             MyText
@@ -60,6 +76,11 @@ Item
                 myValidator:  RegExpValidator
                 {
                     regExp:  /^([0-9][0-9][0-9][0-9])$/
+                }
+                onValueChanged:
+                {
+                    console.log(myText)
+                    theConnectingPage.port = myText
                 }
 
             }

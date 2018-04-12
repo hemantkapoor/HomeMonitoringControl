@@ -1,9 +1,11 @@
-import QtQuick 2.0
+import QtQuick 2.7
 
 Item
 {
     id: myTextAreaId
     property int myFontSize: 50
+    property string myText
+    signal valueChanged
     property RegExpValidator myValidator : RegExpValidator
     {
         regExp: /^.*/
@@ -18,11 +20,17 @@ Item
         border.width: 2
         TextInput
         {
+            id: textInputId
             anchors.fill: parent
             selectByMouse: true
             selectionColor: 'darkgray'
             selectedTextColor: 'white'
             validator: myValidator
+            onEditingFinished:
+            {
+                myTextAreaId.myText = text
+                valueChanged()
+            }
 
             font
             {

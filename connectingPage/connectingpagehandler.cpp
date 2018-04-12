@@ -32,8 +32,11 @@ void ConnectingPageHandler::setIpAddress(QString ipAddress)
         return;
 
     m_ipAddress = ipAddress;
+    qDebug() <<"Ip Address changed to " << m_ipAddress;
     if(!m_ipAddress.isEmpty() && !m_port!=0)
     {
+
+
         emit connectButtonControl(true);
     }
     else
@@ -49,6 +52,7 @@ void ConnectingPageHandler::setPort(quint16 port)
         return;
 
     m_port = port;
+    qDebug() <<"Port changed to " << m_port;
     if(!m_ipAddress.isEmpty() && !m_port!=0)
     {
         emit connectButtonControl(true);
