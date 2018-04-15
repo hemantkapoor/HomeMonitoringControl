@@ -17,7 +17,8 @@ QString ipAddress() const;
 quint16 port() const;
 
 signals:
-    void connectButtonControl(const bool enable);
+    void enableConnectButton();
+    void disableConnectButton();
     void ipAddressChanged(QString ipAddress);
     void portChanged(quint16 port);
 
@@ -29,7 +30,7 @@ void setPort(quint16 port);
 
 private:
     QString m_ipAddress;
-    quint16 m_port;
+    quint16 m_port = 0;
 };
 
 #endif // CONNECTINGPAGEHANDLER_H

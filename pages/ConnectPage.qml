@@ -12,16 +12,29 @@ Item
     height: parent.height
 
     Rectangle
-    {/*
+    {
         Item {
             id: connectionHandlers
             Connections
             {
                 target: theConnectingPage
-                on
+                onEnableConnectButton:
+                {
+                    console.log("Enabling Connect Button")
+                    connectButtonId.enabled = true
+                }
+            }
+            Connections
+            {
+                target: theConnectingPage
+                onDisableConnectButton:
+                {
+                    console.log("Disabling Connect Button")
+                    connectButtonId.enabled = false
+                }
             }
         }
-        */
+
 
         id: connectPageRectId
         anchors.fill: parent
